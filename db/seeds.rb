@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+50.times do |i|
+    Student.create(name: "student #{i}", age:rand(20..50))
+
+end
+
+10.times do |i|
+    Lecture.create(topic: "Lecture #{i}", teacher:"student #{i}")
+end
+
+
+30.times do |i|
+    StudentLecture.create(student_id:rand(1..50), lecture_id:rand(1..10))
+end
+
+puts "#{Student.length()} + #{Lecture.length()} + #{StudentLecture.length()}"
