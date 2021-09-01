@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
     before_action :set_params, only: :index
-    before_action :set_student, only: :show
+    before_action :set_student, only: [:show, :destroy]
 
     def index
         students = Student.filter(@filters).page(@page).per(@per_page)
@@ -17,6 +17,18 @@ class StudentsController < ApplicationController
             render json: student
         else
             render json: {error: 422}
+        end
+    end
+
+    def destroy
+        render json: @student.destroy
+    end
+
+    def update
+        if @student.update(student_params)
+            render json: @student
+        else
+            render json: {errors: @student.errors}
         end
     end
 
