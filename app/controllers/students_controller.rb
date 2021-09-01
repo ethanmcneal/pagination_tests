@@ -11,6 +11,15 @@ class StudentsController < ApplicationController
         render json: @student
     end
 
+    def create
+        student = Student.new(student_params)
+        if student.save
+            render json: student
+        else
+            render json: {error: 422}
+        end
+    end
+
 private
     def set_params
         @filters = params[:filter]
@@ -21,5 +30,8 @@ private
     def set_student
         @student = Student.find(params[:id])
     end
-    
+
+    def student_params
+        params.require(:student).permit(:name, :age)
+    end
 end
