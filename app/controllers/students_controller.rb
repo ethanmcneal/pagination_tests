@@ -16,7 +16,7 @@ class StudentsController < ApplicationController
         if student.save
             render json: student
         else
-            render json: {error: 422}
+            render json: {errors: {invalid_student: student.errors, error: 422}}
         end
     end
 
