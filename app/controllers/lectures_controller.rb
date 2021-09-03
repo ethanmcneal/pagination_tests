@@ -1,6 +1,6 @@
 class LecturesController < ApplicationController
 
-    before_action set_params, only: :index
+    before_action :set_params, only: :index
     def index
         lectures = Lecture.filter(@filters).page(@page).per(@per_page)
         render json: lectures
@@ -10,6 +10,7 @@ class LecturesController < ApplicationController
     
     def set_params
         @page = params[:page] || 1
-        @per_page = params[:per_page] || 5 
+        @per_page = params[:per_page] || 5
+        @filters = params[:filter]
     end
 end
