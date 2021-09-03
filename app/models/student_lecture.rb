@@ -1,4 +1,5 @@
 class StudentLecture < ApplicationRecord
   belongs_to :student
-  belongs_to :lecture
+  belongs_to :lecture, dependent: :destroy
+  
 end

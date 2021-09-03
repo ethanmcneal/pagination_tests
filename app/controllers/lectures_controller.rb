@@ -11,6 +11,10 @@ class LecturesController < ApplicationController
         render json: @lecture
     end
 
+    def destroy
+        @lecture.destory
+    end
+
     private
     
     def set_params
