@@ -12,7 +12,7 @@ class LecturesController < ApplicationController
     end
 
     def destroy
-        @lecture.destory
+        render json: @lecture.destory
     end
 
     private
